@@ -18,6 +18,10 @@ var fillopts = function (wrapped, opts) {
     fn.wrapped = wrapped;
     fn.opts = opts;
 
+    fn.withOpts = function (moreOpts) {
+        return fillopts(fn, moreOpts);
+    };
+
     return fn;
 };
 

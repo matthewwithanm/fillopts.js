@@ -19,3 +19,11 @@ myXHR({url: 'http://example.com'}, callback);
 // The above is equivalent to this:
 xhr({method: 'GET', url: 'http://example.com'}, callback);
 ```
+
+or use chaining:
+
+```javascript
+var myXHR = fillopts(xhr).withOpts({method: 'GET'});
+
+myXHR({url: 'http://example.com'}, callback);
+```
