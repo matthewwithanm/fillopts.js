@@ -1,0 +1,44 @@
+{
+  "name": "fillopts",
+  "version": "0.1.0",
+  "description": "Partial application for functions that accept options objects.",
+  "main": "./index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "xtend": "~3.0.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "chai": "~1.9.1",
+    "grunt": "~0.4.4",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-mocha-test": "~0.10.2",
+    "grunt-bump": "0.0.13",
+    "browserify": "~3.44.2"
+  },
+  "scripts": {
+    "prepublish": "grunt build",
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/matthewwithanm/fillopts.js.git"
+  },
+  "keywords": [
+    "curry",
+    "apply",
+    "bind",
+    "function",
+    "functional",
+    "opts"
+  ],
+  "author": "Matthew Dapena-Tretter <m@tthewwithanm.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matthewwithanm/fillopts.js/issues"
+  }
+}

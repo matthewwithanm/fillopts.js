@@ -1,0 +1,26 @@
+{
+  "name": "fillopts",
+  "version": "0.1.0",
+  "authors": [
+    "Matthew Dapena-Tretter <m@tthewwithanm.com>"
+  ],
+  "description": "Partial application for functions that accept options objects.",
+  "main": "browser-builds/standalone/fillopts.js",
+  "keywords": [
+    "curry",
+    "apply",
+    "bind",
+    "function",
+    "functional",
+    "opts"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/matthewwithanm/fillopts.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
