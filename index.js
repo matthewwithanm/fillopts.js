@@ -3,23 +3,27 @@
 var extend = require('xtend');
 
 
-var fillopts = function (wrapped, opts) {
-    opts = extend(wrapped.opts, opts);
+var fillopts = function (wrapped, opts, position) {
+    position = position || 0;
+    var optsList = wrapped.optsList ? wrapped.optsList.slice(0) : [];
+    optsList[position] = extend(optsList[position], opts);
     wrapped = wrapped.wrapped || wrapped;
 
-    var fn = function (callOpts /*, args... */) {
-        var newArgs,
-            args = Array.prototype.slice.call(arguments, 1);
-        newArgs = [extend(opts, callOpts)];
-        newArgs.push(args);
-        return wrapped.apply(this, newArgs);
+    var fn = function () {
+        var args = [],
+            len = Math.max(arguments.length, optsList.length);
+        for (var i = 0; i < len; i++) {
+            var arg = arguments[i];
+            args.push(optsList[i] ? extend(optsList[i], arg) : arg);
+        }
+        return wrapped.apply(this, args);
     };
 
     fn.wrapped = wrapped;
-    fn.opts = opts;
+    fn.optsList = optsList;
 
-    fn.withOpts = function (moreOpts) {
-        return fillopts(fn, moreOpts);
+    fn.withOpts = function (moreOpts, position) {
+        return fillopts(fn, moreOpts, position);
     };
 
     return fn;
