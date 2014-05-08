@@ -7,7 +7,7 @@ var formatGreeting,
 
 
 formatGreeting = function (opts, punctuation) {
-    return 'Hello, ' + opts.title + ' ' + opts.name + punctuation;
+    return 'Hello, ' + opts.title + ' ' + opts.name + (punctuation || '');
 };
 
 
@@ -29,7 +29,7 @@ describe('fillopts', function () {
     });
     it('overrides previous opts', function () {
         var filled = fillopts(
-            fillopts(formatGreeting, {title: 'Dr.'}, {name: 'Crusher'}),
+            fillopts(formatGreeting, {title: 'Dr.', name: 'Crusher'}),
             {name: 'Pulaski'}
         );
         assert.equal(filled(), 'Hello, Dr. Pulaski');
@@ -55,7 +55,7 @@ describe('fillopts', function () {
         });
         it('overrides previous opts', function () {
             var filled = fillopts(formatGreeting)
-                .withOpts({title: 'Dr.'}, {name: 'Crusher'})
+                .withOpts({title: 'Dr.', name: 'Crusher'})
                 .withOpts({name: 'Pulaski'});
             assert.equal(filled(), 'Hello, Dr. Pulaski');
         });
