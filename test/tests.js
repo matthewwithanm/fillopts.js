@@ -1,12 +1,16 @@
 /*jshint strict:false */
 /*globals describe, it */
 
-var formatGreeting,
+var formatGreeting, formatGreeting2,
     assert = require('chai').assert,
     fillopts = require('../index');
 
 
 formatGreeting = function (opts, punctuation) {
+    return 'Hello, ' + opts.title + ' ' + opts.name + (punctuation || '');
+};
+
+formatGreeting2 = function (dummy, opts, punctuation) {
     return 'Hello, ' + opts.title + ' ' + opts.name + (punctuation || '');
 };
 
@@ -39,6 +43,10 @@ describe('fillopts', function () {
             filledB = fillopts(filledA, {name: 'Crusher'});
         assert.equal(filledA(), 'Hello, Dr. Pulaski');
         assert.equal(filledB(), 'Hello, Dr. Crusher');
+    });
+    it('fills opts in other positions', function () {
+        var filled = fillopts(formatGreeting2, {title: 'Dr.', name: 'Crusher'}, 1);
+        assert.equal(filled(), 'Hello, Dr. Crusher');
     });
 
     describe('withOpts', function () {
