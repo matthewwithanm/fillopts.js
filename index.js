@@ -10,10 +10,11 @@ var fillopts = function (wrapped, opts, position) {
     wrapped = wrapped.wrapped || wrapped;
 
     var fn = function () {
-        var args = [],
+        var i, arg,
+            args = [],
             len = Math.max(arguments.length, optsList.length);
-        for (var i = 0; i < len; i++) {
-            var arg = arguments[i];
+        for (i = 0; i < len; i++) {
+            arg = arguments[i];
             args.push(optsList[i] ? extend(optsList[i], arg) : arg);
         }
         return wrapped.apply(this, args);
