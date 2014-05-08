@@ -6,7 +6,11 @@ doesn't work too well for functions that use objects to emulate named arguments.
 Since that's such a common idiom in JS, we made this library to handle it.
 
 ```javascript
-var getJSON = fillopts(xhr).withOpts({method: 'GET', headers: {'Accept': 'application/json'}});
+var getJSON = fillopts(xhr)
+    .withOpts({
+        method: 'GET',
+        headers: {'Accept': 'application/json'}
+    });
 getJSON({url: 'http://example.com/whatever.json'}, ...);
 ```
 
