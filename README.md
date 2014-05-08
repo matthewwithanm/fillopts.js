@@ -27,3 +27,12 @@ var myXHR = fillopts(xhr).withOpts({method: 'GET'});
 
 myXHR({url: 'http://example.com'}, callback);
 ```
+
+You can also fill opts that aren't in the first position by passing an index.
+All of the following are equivalent:
+
+```javascript
+fillopts(f, {name: 'Crusher'}, 1)();
+fillopts(f).withOpts({name: 'Crusher'}, 1)();
+f(undefined, {name: 'Crusher'});
+```
