@@ -11,6 +11,8 @@ var fillopts = function (wrapped, opts, position) {
 
     var fn = function () {
         var i, arg,
+            optsList = fn.optsList,
+            wrapped = fn.wrapped,
             args = [],
             len = Math.max(arguments.length, optsList.length);
         for (i = 0; i < len; i++) {
